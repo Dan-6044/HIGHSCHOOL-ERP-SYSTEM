@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment</title>
+    <!-- Fontawesom Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="title brand">Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sdashbaord' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Student Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'enroll' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-book"></i>
+                        </span>
+                        <span class="title">Course Enrollemnet</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'classes' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-person-chalkboard"></i>
+                        </span>
+                        <span class="title">My Classes</span>
+                    </a>
+                </li>
+
+                
+
+                <li>
+                    <a href="{% url 'assignment' %}">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span class="title">Assignment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'result' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'fee' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </span>
+                        <span class="title">Fee</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="enroll">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                </div>
+            </div>
+
+            <!-- Course Enrollments -->
+            <div class="courseenroll">
+                <div class="enrollHeader">
+                    <h2>Enroll Your Course</h2>
+                </div>
+                <section class="enroll">
+                    <form action="#" class="form">
+                        <div class="input-box">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="Enter full name" required />
+                        </div>
+                        <div class="input-box">
+                            <label>Email Address</label>
+                            <input type="text" placeholder="Enter email address" required />
+                        </div>
+                        <div class="column">
+                            <div class="input-box">
+                                <label>Phone Number</label>
+                                <input type="number" placeholder="Enter phone number" required />
+                            </div>
+                            <div class="input-box">
+                                <label>Date</label>
+                                <input type="date" placeholder="Enter birth date" required />
+                            </div>
+                        </div>
+                        <div class="input-box subject">
+                            <label>Subject</label>
+                            <div class="column">
+                                <div class="select-box">
+                                    <select>
+                                        <option hidden>Class</option>
+                                        <option>Form 1</option>
+                                        <option>Form 2</option>
+                                        <option>Form 3</option>
+                                        <option>Form 4</option>
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select>
+                                        <option hidden>Subject</option>
+                                        <option>Maths</option>
+                                        <option>English</option>
+                                        <option>Physics</option>
+                                        <option>Biology</option>
+                                        <option>CRE</option>
+                                        <option>Business Studies</option>
+                                        <option>Chemistry</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button>Enroll</button>
+                    </form>
+                </section>   
+            </div>
+           
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

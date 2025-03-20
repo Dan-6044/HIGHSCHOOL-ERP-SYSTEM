@@ -1,0 +1,238 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <!-- Fontawesom Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="title brand">Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sdashbaord' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Student Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'enroll' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-book"></i>
+                        </span>
+                        <span class="title">Course Enrollemnet</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'classes' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-person-chalkboard"></i>
+                        </span>
+                        <span class="title">My Classes</span>
+                    </a>
+                </li>
+
+        
+
+                <li>
+                    <a href="{% url 'assignment' %}">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span class="title">Assignment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'result' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'fee' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </span>
+                        <span class="title">Fee</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id classes>
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                </div>
+            </div>
+
+            <!-- Classes Details -->
+            <div class="myclasses">
+                <div class="classHeader">
+                    <h2>My Classes Details</h2>
+                </div>
+
+                <div class="recent">
+                    <div class="recentclassHeader">
+                        <h3><i class="fa-solid fa-bookmark"></i> Recently accessed courses</h3>
+                    </div>
+                    <div class="cards_wrap">
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b1.png' %}" alt="Bus Image">
+                                <div class="subject"> Maths</div>
+                                <div class="date">Class held on: 2023/07/02</div>
+                                <div class="teacher_name">Mrs Joy</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b2.png' %}" alt="Bus Image">
+                                <div class="subject">Chemistry</div>
+                                <div class="date">Class held on: 2023/06/28</div>   
+                                <div class="teacher_name">Mr Brian</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b5.png' %}" alt="Bus Image">
+                                <div class="subject">English</div>
+                                <div class="date">Class held on: 2023/07/15</div>
+                                <div class="teacher_name">Mrs Carol</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="all">
+                    <div class="allclassHeader">
+                        <h3><i class="fa-solid fa-bookmark"></i> Course Overview</h3>
+                    </div>
+                    <div class="input-box subject">
+                        <div class="column">
+                            <div class="select-box">
+                                <select class="clz">
+                                    <option>All</option>
+                                    <option>In Progress</option>
+                                    <option>Future</option>
+                                    <option>Past</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards_wrap">
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b1.png' %}" alt="Bus Image">
+                                <div class="subject">Maths</div>
+                                <div class="date">Class held on: 2023/07/02</div>
+                                <div class="teacher_name">Mr.Kevin</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b2.png' %}" alt="Bus Image">
+                                <div class="subject">Chemistry</div>
+                                <div class="date">Class held on: 2023/06/28</div>
+                                <div class="teacher_name">Mr. Brian</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b5.png' %}" alt="Bus Image">
+                                <div class="subject">Physics</div>
+                                <div class="date">Class held on: 2023/07/15</div>
+                                <div class="teacher_name">Mr Monty</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b7.png' %}" alt="Bus Image">
+                                <div class="subject">English</div>
+                                <div class="date">Class held on: 2023/07/10</div>
+                                <div class="teacher_name">Mrs Joy</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b7.png' %}" alt="Bus Image">
+                                <div class="subject">Biology</div>
+                                <div class="date">Class held on: 2023/07/10</div>
+                                <div class="teacher_name">Mr Claud</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b7.png' %}" alt="Bus Image">
+                                <div class="subject">CRE</div>
+                                <div class="date">Class held on: 2023/07/11</div>
+                                <div class="teacher_name">Mrs Joy</div>
+                            </div>
+                        </div>
+                        <div class="card_item">
+                            <div class="card_inner">
+                                <img src="{% static 'images/b7.png' %}" alt="Bus Image">
+                                <div class="subject">Business Studies</div>
+                                <div class="date">Class held on: 2023/07/12</div>
+                                <div class="teacher_name">Mr Kevin</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+           
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

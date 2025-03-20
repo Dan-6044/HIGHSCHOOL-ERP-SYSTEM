@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student fees</title>
+    <!-- Fontawesom Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="title brand">Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sdashbaord' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Admin Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'attendance' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                
+
+                <li>
+                    <a href="{% url 'result' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'adminFee' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </span>
+                        <span class="title">Fees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="fee">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="images/dp.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- Class Fee Details -->
+
+            <div class="fee">
+                <div class="coursefee">
+                    <div class="cardHeader">
+                        <h2>Class Payment Details</h2>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Class</td>
+                                <td>Price</td>
+                                <td>Fees balance</td>
+                                <td>Date</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Form One</td>
+                                <td>Ksh 50000</td>
+                                <td>Null</td>
+                                <td>2023/11/26</td>
+                                <td><span class="status fully"> Fully Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Form Two</td>
+                                <td>Ksh 45000</td>
+                                <td>Ksh 10000</td>
+                                <td>2023/11/28</td>
+                                <td><span class="status partially"> Partially Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Form Three</td>
+                                <td>Ksh35000</td>
+                                <td>Ksh 15000</td>
+                                <td>2023/11/29</td>
+                                <td><span class="status partially"> Partially Paid</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>Form Four</td>
+                                <td>Ksh 30000</td>
+                                <td>Ksh 30000</td>
+                                <td>2023/11/30</td>
+                                <td><span class="status not"> Not Paid</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!-- Fontawesom Icons -->
+    <link rel="icon" type="image/x-icon" href="images/adminwall.jpg">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa fa-pie-chart"></i>
+                        </span>
+                        <span class="title brand"> Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'dashboard' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Admin Dashboard</span>
+                    </a>
+                </li>
+
+                
+                   
+
+                
+                <li>
+                    <a href="{% url 'sattendance' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
+
+                
+
+                <li>
+                    <a href="{% url 'sresult' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sadminFee' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </span>
+                        <span class="title">Fees</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logoutz' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="dashboard">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="images/dp.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">2,500</div>
+                        <div class="cardName">Students</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">150</div>
+                        <div class="cardName">Teachers</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">12</div>
+                        <div class="cardName">Classes</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers income">Ksh 150,000</div>
+                        <div class="cardName">Revenue Collected</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Table & Progress -->
+
+            <div class="details">
+                <div class="timetable">
+                    <div class="timetableheader">
+                        <h2>Class Teachers </h2>
+                    </div>
+                    <div class="tablecont">
+                        <table cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="period"></th>
+                                    
+                                    <th> Teacher Name</th>
+                                    <th>Teacher Class</th>
+                                    <th>Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="number"><b>1</b></td>
+                                    <td class="name">Martin Kimathi</td>
+                                    <td class="name">Form One Red</td>
+                                    <td class="name">0712345678</td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>2</b></td>
+                                    <td class="name">Joyce Zawadi</td>
+                                    <td class="name">Form One Blue </td>
+                                    <td class="name">072289018</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>3</b></td>
+                                    <td class="name">Hellen Mutahi</td>
+                                    <td class="name">Form One Yellow</td>
+                                    <td class="name">0723904678</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>4</b></td>
+                                    <td class="name">Brian Otieno</td>
+                                    <td class="name">Form Two Red</td>
+                                    <td class="name">071178940</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>5</b></td>
+                                    <td class="name">Claud Mkodi</td>
+                                    <td class="name">Form Two Blue</td>
+                                    <td class="name">0712345678</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>6</b></td>
+                                    <td class="name">Carol Mutanu</td>
+                                    <td class="name">Form Two Yellow</td>
+                                    <td class="name">0719478901</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>7</b></td>
+                                    <td class="name">Kevin Kihara</td>
+                                    <td class="name">Form Three Red</td>
+                                    <td class="name">0712748652</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>8</b></td>
+                                    <td class="name">Joy Yigo</td>
+                                    <td class="name">Form Three Blue</td>
+                                    <td class="name">0723456780</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>9</b></td>
+                                    <td class="name">Monty Carmon</td>
+                                    <td class="name">Form Three Yellow</td>
+                                    <td class="name">0734567834</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>10</b></td>
+                                    <td class="name">Alfred Mutuma</td>
+                                    <td class="name">Form Four Red</td>
+                                    <td class="name">0734567874</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>11</b></td>
+                                    <td class="name">Dede James</td>
+                                    <td class="name">Form Four Blue</td>
+                                    <td class="name">0745678340</td>
+                                </tr>
+                                <tr>
+                                    <td class="number"><b>12</b></td>
+                                    <td class="name">Stephen Bingy</td>
+                                    <td class="name">Form Four Yellow</td>
+                                    <td class="name">0794567834</td>
+                                </tr>
+                            </tbody>  
+                        </table>
+                    </div>
+                </div>
+
+                <div class="progressbar">
+                    <div class="progressheader">
+                        <h2>Average Results</h2>
+                    </div>
+                    <div class="circle">
+                        <div class="circular-progress">
+                            <span class="progress-value">0%</span>
+                        </div>
+                    </div>
+                    <div class="progresscont">
+                        <p>Combine Maths = <span class="maths">75%</span></p>
+                        <p>Physic = <span class="phy">80%</span></p>
+                        <p>Chemistry = <span class="chem">77%</span></p>
+                        <p>English = <span class="eng">85%</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

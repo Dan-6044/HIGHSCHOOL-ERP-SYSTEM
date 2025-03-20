@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Class Attendence</title>
+    <!-- Fontawesom Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="title brand">Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'tdashboard' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Teacher Dashboard</span>
+                    </a>
+                </li>
+
+            <li>
+
+                <a href="{% url 'tenroll' %}">
+                    <span class="icon">
+                        <i class="fas fa-duotone fa-book"></i>
+                    </span>
+                    <span class="title">Course Enrollemnet</span>
+                </a>
+             </li>
+
+            <li>
+                <a href="{% url 'tclasses' %}">
+                    <span class="icon">
+                        <i class="fas fa-duotone fa-person-chalkboard"></i>
+                    </span>
+                    <span class="title">My Classes</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'tattendance' %}">
+                    <span class="icon">
+                        <i class="fa-solid fa-clipboard-user"></i>
+                    </span>
+                    <span class="title">Attendance</span>
+                </a>
+            </li>
+
+
+                
+                <li>
+                    <a href="{% url 'logouts' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="attendence">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                </div>
+            </div>
+
+            <!-- Classes Details -->
+
+            <div class="courseattendence">
+                <div class="attendenceHeader">
+                    <h2>My timetable</h2>
+                </div>
+            
+                <section class="attendence">
+                    <div class="attendence-box">
+                        <h3>Attendance</h3>
+                        <div class="attendence-option">
+                            <div class="attendence">
+                                <input type="radio" id="check-attend" name="attendence" checked />
+                                <label for="check-male">Attend</label>
+                            </div>
+                            <div class="attendence">
+                                <input type="radio" id="check-notattend" name="attendence" />
+                                <label for="check-female">Not Attend</label>
+                            </div>
+                        </div>
+                    </div>
+                </section> 
+                <button>Submit</button>  
+            </div>
+
+            <div class="details">
+                <div class="timetable">
+                    <div class="timetableheader">
+                        <h2>Timetable</h2>
+                    </div>
+                    <div class="tablecont">
+                        <table cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="period"></th>
+                                    <th>7.30-8.15</th>
+                                    <th>8.15-9.00</th>
+                                    <th>9.00-9.45</th>
+                                    <th>9.45-10.30</th>
+                                    <th>10.30-11.15</th>
+                                    <th>11.15-12.00</th>
+                                    <th>12.00-12.45</th>
+                                    <th>12.45-1.30</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="week"><b>Mon</b></td>
+                                    <td colspan="2" class="maths"> Maths</td>
+                                    <td colspan="2" class="phy">Physics</td>
+                                    <td class="chem">Chemistry</td>
+                                    <td rowspan="5" class="lunch">Lunch Break</td>
+                                    <td class="chem">Chemistry</td>
+                                    <td class="eng">English</td>
+                                </tr>
+                                <tr>
+                                    <td class="week"><b>Tue</b></td>
+                                    <td class="eng">English</td>
+                                    <td colspan="2" class="maths"> Maths</td>
+                                    <td colspan="2" class="phy">Physics</td>
+                                    <td colspan="2" class="chem">Chemistry</td>
+                                </tr>
+                                <tr>
+                                    <td class="week"><b>Wed</b></td>
+                                    <td colspan="2" class="phy">Physics</td>
+                                    <td class="maths"> Maths</td>
+                                    <td class="chem">Chemistry</td>
+                                    <td></td>
+                                    <td colspan="2" class="eng">English</td>
+                                </tr>
+                                <tr>
+                                    <td class="week"><b>Thu</b></td>
+                                    <td colspan="2" class="maths"> Maths</td>
+                                    <td></td>
+                                    <td colspan="2" class="chem">Chemistry</td>
+                                    <td class="phy">Physics</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="week"><b>Fri</b></td>
+                                    <td></td>
+                                    <td class="phy">Physics</td>
+                                    <td colspan="2" class="maths"> Maths</td>
+                                    <td class="chem">Chemistry</td>
+                                    <td colspan="2" class="eng">English</td>
+                                </tr>
+                            </tbody>  
+                        </table>
+                    </div>
+                </div>
+
+           
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

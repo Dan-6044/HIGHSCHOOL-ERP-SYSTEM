@@ -1,0 +1,203 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Fontawesom Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
+                        </span>
+                        <span class="title brand">Matumaini School</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'sdashbaord' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-gauge"></i>
+                        </span>
+                        <span class="title">Student Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'enroll' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-book"></i>
+                        </span>
+                        <span class="title">Course Enrollemnet</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'classes' %}">
+                        <span class="icon">
+                            <i class="fas fa-duotone fa-person-chalkboard"></i>
+                        </span>
+                        <span class="title">My Classes</span>
+                    </a>
+                </li>
+
+                
+
+
+                <li>
+                    <a href="{% url 'assignment' %}">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                        </span>
+                        <span class="title">Assignment</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'result' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-square-poll-vertical"></i>
+                        </span>
+                        <span class="title">Results</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'fee' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-sack-dollar"></i>
+                        </span>
+                        <span class="title">Fee</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="dashboard">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
+
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+
+                <div class="user">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">500</div>
+                        <div class="cardName">Students</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">Form 1 </div>
+                        <div class="cardName">Class</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">North</div>
+                        <div class="cardName">Stream</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers income">Ksh 5,000</div>
+                        <div class="cardName">Fees</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Time Table & Progress -->
+
+            <div class="details">
+                <div class="timetable">
+                    <div class="timetableheader">
+                        <h2>Average Results</h2>
+                    </div>
+
+                    <div class="progresscont">
+                        <p> Maths = <span class="maths">80%</span></p>
+                        <p>Physic = <span class="phy">60%</span></p>
+                        <p>Chemistry = <span class="chem">65%</span></p>
+                        <p>English = <span class="eng">68%</span></p>
+                    </div>
+                </div>
+                <div class="progressbar">
+                    <div class="progressheader">
+                        <h2>Target</h2>
+                    </div>
+                    <div class="circle">
+                        <div class="circular-progress">
+                            <span class="progress-value">70%</span>
+                        </div>
+                    </div>
+                    <div class="progresscont">
+                        <p> Maths = <span class="maths">75%</span></p>
+                        <p>Physic = <span class="phy">80%</span></p>
+                        <p>Chemistry = <span class="chem">77%</span></p>
+                        <p>English = <span class="eng">85%</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

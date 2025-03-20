@@ -1,0 +1,38 @@
+# Byte-compiled / temporary files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.swp
+*.swo
+*.DS_Store
+
+# Virtual environment
+venv/
+env/
+ENV/
+*.env
+*.venv
+.Python
+
+# Django-specific files
+db.sqlite3
+db.sqlite3-journal
+/media/
+/staticfiles/
+*.log
+
+# Ignore local settings (if any)
+local_settings.py
+
+# VSCode & JetBrains IDEs
+.vscode/
+.idea/
+
+# macOS System Files
+.DS_Store
+
+# Node modules (if using npm/yarn for frontend)
+node_modules/
+package-lock.json
+yarn.lock

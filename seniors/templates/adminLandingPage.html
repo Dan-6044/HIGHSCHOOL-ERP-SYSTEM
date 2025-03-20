@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matumaini School - Home</title>
+    <link rel="icon" type="image/x-icon" href="images/land.jpg">
+    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome (Icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/studentsLanding.css' %}">
+    
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">Matumaini School</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-home"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-envelope"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accessup' %}"><i class="fa fa-user-plus"></i> Signup/Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+        <div class="container">
+            <h1>Welcome to Matumaini School</h1>
+            <p class="lead">A Place of Hard Work, Success, and Knowledge</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container my-5">
+        <h2 class="text-center">About Us</h2>
+        <p class="text-center">Matumaini School is an e-learning platform dedicated to uplifting living standards in diverse communities by providing valuable educational content to individuals who need it the most.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Matumaini School. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
