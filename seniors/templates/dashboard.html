@@ -38,10 +38,25 @@
                     </a>
                 </li>
 
-                
-                   
+                <li>
+                    <a href="{% url 'steachers' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-person"></i>
+                        </span>
+                        <span class="title">Add Teacher</span>
+                    </a>
+                </li>
 
-                
+                <li>
+                    <a href="{% url 'sstudents' %}">
+                        <span class="icon">
+                            <i class="fa-solid fa-child"></i>
+                        </span>
+                        <span class="title">Add Students</span>
+                    </a>
+                </li>
+
+               
                 <li>
                     <a href="{% url 'sattendance' %}">
                         <span class="icon">
@@ -151,6 +166,7 @@
             <!-- Time Table & Progress -->
 
             <div class="details">
+
                 <div class="timetable">
                     <div class="timetableheader">
                         <h2>Class Teachers </h2>
@@ -263,6 +279,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
     <!-- Scripts -->

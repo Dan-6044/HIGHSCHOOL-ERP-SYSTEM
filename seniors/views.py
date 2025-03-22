@@ -17,6 +17,13 @@ def dashboard(request):
 def sattendance(request):
     return render(request, 'Sattendance.html')
 
+def steachers(request):
+    return render(request, 'Steachers.html')
+
+def sstudents(request):
+    return render(request, 'Sstudents.html')
+
+
 def sresult(request):
     return render(request, 'Sresult.html')
 
