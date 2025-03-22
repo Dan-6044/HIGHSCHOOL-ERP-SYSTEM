@@ -120,47 +120,50 @@
                     <h2>Enroll Teachers</h2>
                 </div>
                 <section class="enroll">
-                    <form action="#" class="form">
+                    <form  class="form" id="teacherEnroll" action="{% url 'steachers' %}" method="POST">
                         <div class="input-box">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter full name" required />
+                            <input type="text" id="names" name="names" placeholder="Enter full name" required placeholder="Enter full name" required />
                         </div>
 
                         <div class="column">
                             <div class="input-box">
                                 <label>Email Address</label>
-                                <input type="text" placeholder="Enter email address" required />
+                                <input type="email"  id="email" name="email" required  placeholder="Enter email address" required />
                             </div>
                             <div class="input-box">
                                 <label>Subjects</label>
-                                <input type="text" placeholder="Enter the Subjects" required />
+                                <input type="text" id="subjects" name="subjects" required placeholder="Enter the Subjects" required />
                             </div>
                         </div>
                         <div class="column">
                             <div class="input-box">
                                 <label>Phone Number</label>
-                                <input type="number" placeholder="Enter phone number" required />
+                                <input type="number" id="phonenumber" name="phonenumber" placeholder="Enter phone number" required />
                             </div>
                             <div class="input-box">
                                 <label>Enroll Date</label>
-                                <input type="date" placeholder="Enter birth date" required />
+                                <input type="date" id="date" name="date" placeholder="Enter birth date" required />
                             </div>
                         </div>
                         <div class="input-box subject">
-                            <label>Subject</label>
+                            <label>Category & CLASS teacher</label>
                             <div class="column">
                                 <div class="select-box">
-                                    <select>
-                                        <option hidden>Class</option>
-                                        <option>Form 1</option>
-                                        <option>Form 2</option>
-                                        <option>Form 3</option>
-                                        <option>Form 4</option>
+                                    <select id= " category" name="category">
+                                        <option hidden>category</option>
+                                        <option>Ordinary</option>
+                                        <option>Teaching Practice</option>
+                                        <option>Class Teacher</option>
+                                        <option>HOD</option>
+                                        <option>DEPUTY PRINCIPAL</option>
+                                        <option>PRINCIPAL</option>
                                     </select>
                                 </div>
                                 <div class="select-box">
-                                    <select>
+                                    <select id="class" name="class">
                                         <option hidden>Class Teacher</option>
+                                        <option>Not a class teacher</option>
                                         <option>Form 1 Red</option>
                                         <option>Form 1 Blue</option>
                                         <option>Form 1 Yellow</option>

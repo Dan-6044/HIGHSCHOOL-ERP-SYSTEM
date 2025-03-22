@@ -17,11 +17,64 @@ def dashboard(request):
 def sattendance(request):
     return render(request, 'Sattendance.html')
 
-def steachers(request):
-    return render(request, 'Steachers.html')
 
+
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .models import Student, Teacher  
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt
 def sstudents(request):
+    if request.method == "POST":
+        full_name = request.POST.get('names')
+        parents_name = request.POST.get('parents')
+        reg_number = request.POST.get('reg_number')
+        parents_phone = request.POST.get('phonenumber')
+        birth_date = request.POST.get('date')
+        student_class = request.POST.get('class')
+        category = request.POST.get('category')
+
+        # Save to the database
+        Student.objects.create(
+            full_name=full_name,
+            parents_name=parents_name,
+            reg_number=reg_number,
+            parents_phone=parents_phone,
+            birth_date=birth_date,
+            student_class=student_class,
+            category=category
+        )
+
+        return redirect('sstudents')
+
     return render(request, 'Sstudents.html')
+
+@csrf_exempt
+def steachers(request):
+    if request.method == "POST":
+        full_name = request.POST.get('names')
+        email = request.POST.get('email')
+        subjects = request.POST.get('subjects')
+        teacher_phone = request.POST.get('phonenumber')
+        enroll_date = request.POST.get('date')
+        class_teacher = request.POST.get('class')
+        category = request.POST.get('category')
+
+        # Save to the database
+        Teacher.objects.create(
+            full_name=full_name,
+            email=email,
+            subjects=subjects,
+            teacher_phone=teacher_phone,
+            enroll_date=enroll_date,
+            class_teacher=class_teacher,
+            category=category
+        )
+
+        return redirect('steachers')
+
+    return render(request, 'Steachers.html')
 
 
 def sresult(request):

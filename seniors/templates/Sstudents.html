@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Enrollment</title>
+    <title>Students Enrollment</title>
     <!-- Fontawesom Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
@@ -120,37 +120,37 @@
                     <h2>Enroll Students</h2>
                 </div>
                 <section class="enroll">
-                    <form action="#" class="form">
+                    <form class="form" id="studentEnroll" action="{% url 'sstudents' %}" method="POST">
                         <div class="input-box">
                             <label>Full Name</label>
-                            <input type="text" placeholder="Enter full name" required />
+                            <input type="text" id="names" name="names" placeholder="Enter full name" required />
                         </div>
 
                         <div class="column">
                             <div class="input-box">
                                 <label>Parents Name</label>
-                                <input type="text" placeholder="Enter Parents" required />
+                                <input type="text"  name="parents" id="parents" placeholder="Enter Parents" required />
                             </div>
                             <div class="input-box">
-                                <label>Students Bakground</label>
-                                <input type="text" placeholder="Enter Students Bakground" required />
+                                <label>Students Reg No.</label>
+                                <input type="number" id="reg_number" name="reg_number" placeholder="Enter Students Reg No." required />
                             </div>
                         </div>
                         <div class="column">
                             <div class="input-box">
                                 <label>Parents Phone Number</label>
-                                <input type="number" placeholder="Enter Parents phone number" required />
+                                <input type="number" id="phonenumber" name="phonenumber" placeholder="Enter Parents phone number" required />
                             </div>
                             <div class="input-box">
                                 <label>Date Of BIrth</label>
-                                <input type="date" placeholder="Enter  Students birth date" required />
+                                <input type="date" id="date" name="date" placeholder="Enter  Students birth date" required />
                             </div>
                         </div>
                         <div class="input-box subject">
                             <label>Class</label>
                             <div class="column">
                                 <div class="select-box">
-                                    <select>
+                                    <select id= " class" name="class">
                                         <option hidden>Class</option>
                                         <option>Form 1 Red</option>
                                         <option>Form 1 Yellow</option>
@@ -166,8 +166,8 @@
                                         <option>Form 4 Blue</option>
                                     </select>
                                 </div>
-                                <div class="select-box">
-                                    <select>
+                                <div class="select-box" id= " category" name="category">
+                                    <select id= " category" name="category">
                                         <option hidden>Category</option>
                                     <option> Ordinary </option>                                        
                                     <option> Special Gifts </option>                                        
