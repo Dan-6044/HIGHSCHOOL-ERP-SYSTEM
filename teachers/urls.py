@@ -7,7 +7,7 @@ urlpatterns = [
     path('tenroll', views.tenroll, name='tenroll'),
     path('tclasses', views.tclasses, name='tclasses'),
     path('tattendance', views.tattendance, name='tattendance'),
-     path('register/', views.register, name='register'),
+         path('teacher_auth/', views.teacher_auth, name='teacher_auth'),
     path('login/', views.login, name='login'),
     path('logouts/', views.logout_views, name='logouts'),
 

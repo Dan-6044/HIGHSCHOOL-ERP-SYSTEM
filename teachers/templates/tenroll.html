@@ -6,11 +6,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Enrollment</title>
+    <title>Results</title>
     <!-- Fontawesom Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <style>
+        .container {
+            display: flex;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,18 +91,11 @@
                         <span class="icon">
                             <i class="fas fa-duotone fa-book"></i>
                         </span>
-                        <span class="title">Course Enrollemnet</span>
+                        <span class="title">Students Results</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="{% url 'tclasses' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-person-chalkboard"></i>
-                        </span>
-                        <span class="title">My Classes</span>
-                    </a>
-                </li>
+                
 
                 <li>
                     <a href="{% url 'tattendance' %}">
@@ -93,61 +136,67 @@
                 </div>
             </div>
 
-            <!-- Course Enrollments -->
-            <div class="courseenroll">
-                <div class="enrollHeader">
-                    <h2>Enroll Your Course</h2>
-                </div>
-                <section class="enroll">
-                    <form action="#" class="form">
-                        <div class="input-box">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="Enter full name" required />
-                        </div>
-                        <div class="input-box">
-                            <label>Email Address</label>
-                            <input type="text" placeholder="Enter email address" required />
-                        </div>
-                        <div class="column">
-                            <div class="input-box">
-                                <label>Phone Number</label>
-                                <input type="number" placeholder="Enter phone number" required />
-                            </div>
-                            <div class="input-box">
-                                <label>Date</label>
-                                <input type="date" placeholder="Enter birth date" required />
-                            </div>
-                        </div>
-                        <div class="input-box subject">
-                            <label>Subject</label>
-                            <div class="column">
-                                <div class="select-box">
-                                    <select>
-                                        <option hidden>Class</option>
-                                        <option>Form 1</option>
-                                        <option>Form 2</option>
-                                        <option>Form 3</option>
-                                        <option>Form 4</option>
-                                    </select>
-                                </div>
-                                <div class="select-box">
-                                    <select>
-                                        <option hidden>Subject</option>
-                                        <option>Maths</option>
-                                        <option>English</option>
-                                        <option>Physics</option>
-                                        <option>Biology</option>
-                                        <option>CRE</option>
-                                        <option>Business Studies</option>
-                                        <option>Chemistry</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button>Enroll</button>
-                    </form>
-                </section>   
-            </div>
+<h2>Enter Student Results</h2>
+            
+            <form method="GET">
+                <label for="class_name">Select Class:</label>
+                    <select name="class_name" id="class_name" onchange="this.form.submit()">
+                    <option value="">-- Choose Class --</option>
+                    <option value="Form 1 Red" {% if class_selected == "Form 1 Red" %}selected{% endif %}>Form 1 Red</option>
+                    <option value="Form 1 Blue" {% if class_selected == "Form 1 Blue" %}selected{% endif %}>Form 1 Blue</option>
+                    <option value="Form 1 Yellow" {% if class_selected == "Form 1 Yellow" %}selected{% endif %}>Form 1 Yellow</option>
+                    <option value="Form 2 Red" {% if class_selected == "Form 2 Red" %}selected{% endif %}>Form 2 Red</option>
+                    <option value="Form 2 Blue" {% if class_selected == "Form 2 Blue" %}selected{% endif %}>Form 2 Blue</option>
+                    <option value="Form 2 Yellow" {% if class_selected == "Form 2 Yellow" %}selected{% endif %}>Form 2 Yellow</option>
+                    <option value="Form 3 Red" {% if class_selected == "Form 3 Red" %}selected{% endif %}>Form 3 Red</option>
+                    <option value="Form 3 Blue" {% if class_selected == "Form 3 Blue" %}selected{% endif %}>Form 3 Blue</option>
+                    <option value="Form 3 Yellow" {% if class_selected == "Form 3 Yellow" %}selected{% endif %}>Form 3 Yellow</option>
+                    <option value="Form 4 Red" {% if class_selected == "Form 4 Red" %}selected{% endif %}>Form 4 Red</option>
+                    <option value="Form 4 Blue" {% if class_selected == "Form 4 Blue" %}selected{% endif %}>Form 4 Blue</option>
+                    <option value="Form 4 Yellow" {% if class_selected == "Form 4 Yellow" %}selected{% endif %}>Form 4 Yellow</option>
+                </select>
+
+            </form>
+            
+            {% if students %}
+<form method="POST">
+    {% csrf_token %}
+    <label for="subject">Enter Subject:</label>
+    <input type="text" name="subject" required>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Reg Number</th>
+                <th>Marks</th>
+                <th>Term</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.full_name }}</td>  <!-- Updated field -->
+                <td>{{ student.reg_number }}</td>
+                <td><input type="number" name="marks_{{ student.id }}" min="0" max="100"></td>
+                <td>
+                    <select name="term_{{ student.id }}">
+                        <option value="Term 1">Term 1</option>
+                        <option value="Term 2">Term 2</option>
+                        <option value="Term 3">Term 3</option>
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <button type="submit">Save Results</button>
+</form>
+{% else %}
+<p>No students found in {{ class_selected }}.</p>
+{% endif %}
+
            
         </div>
     </div>

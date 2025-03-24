@@ -11,12 +11,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+    /* Styling the results container */
+.results-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Title styling */
+.results-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Table wrapper for responsiveness */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Styling the table */
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Table headers */
+.results-table thead {
+    background-color: #007BFF;
+    color: white;
+}
+
+.results-table th, 
+.results-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Alternating row colors */
+.results-table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.results-table tbody tr:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+/* Hover effect on rows */
+.results-table tbody tr:hover {
+    background-color: #d4e2ff;
+    transition: 0.3s ease-in-out;
+}
+
+/* No results message */
+.no-results {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+}
+
+    </style>
 </head>
 
 <body>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
+<div class="navigation">
             <ul>
                 <li>
                     <a href="#">
@@ -28,43 +97,41 @@
                 </li>
 
                 <li>
-                    <a href="{% url 'sdashbaord' %}">
+                    <a href="{% url 'student_dashboard' %}">
                         <span class="icon">
                             <i class="fa-solid fa-gauge"></i>
                         </span>
-                        <span class="title">Admin Dashboard</span>
+                        <span class="title">Student Dashboard</span>
                     </a>
                 </li>
 
-            
-
                 
+
+
                 <li>
-                    <a href="{% url 'attendance' %}">
+                    <a href="{% url 'assignment' %}">
                         <span class="icon">
-                            <i class="fa-solid fa-clipboard-user"></i>
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                         </span>
-                        <span class="title">Attendance</span>
+                        <span class="title">Assign & attendances</span>
                     </a>
                 </li>
-
-                
 
                 <li>
                     <a href="{% url 'result' %}">
                         <span class="icon">
                             <i class="fa-solid fa-square-poll-vertical"></i>
                         </span>
-                        <span class="title">Result</span>
+                        <span class="title">Results</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{% url 'adminFee' %}">
+                    <a href="{% url 'fee' %}">
                         <span class="icon">
                             <i class="fa-solid fa-sack-dollar"></i>
                         </span>
-                        <span class="title">Fees</span>
+                        <span class="title">Fee</span>
                     </a>
                 </li>
 
@@ -98,295 +165,32 @@
                 </div>
             </div>
 
-            <!-- Class Fee Details -->
+{% if student %}
+    <div class="results-container">
+        <h2 class="results-title">Results for {{ student.name }} ({{ student.reg_number }}) - {{ student.class }}</h2>
+        <div class="table-wrapper">
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for subject, marks in student.subjects.items %}
+                    <tr>
+                        <td>{{ subject }}</td>
+                        <td>{{ marks }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% else %}
+    <p class="no-results">No results found.</p>
+{% endif %}
 
-            <div class="results">
-                <div class="courseresults">
-                    <div class="resultsHeader">
-                        <h2>First Term Overall Results</h2>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Class</td>
-                                <td>Stream</td>
-                                <td>Issued Date</td>
-                                <td>Mean Grade</td>
-                            </tr>
-                        </thead>
-    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Red</td>
-                                <td>2023/10/08</td>
-                                <td>A-</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Blue</td>
-                                <td>2023/08/08</td>
-                                <td>B</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Yellow</td>
-                                <td>2023/08/08</td>
-                                <td>B+</td>
-                            </tr>
-    
-                            <tr>
-                                <td>2</td>
-                                <td>Red</td>
-                                <td>2023/08/08</td>
-                                <td>B_</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Blue</td>
-                                <td>2023/08/08</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Yellow</td>
-                                <td>2023/08/08</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Red</td>
-                                <td>2023/08/08</td>
-                                <td>A-</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Blue</td>
-                                <td>2023/08/08</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Yellow</td>
-                                <td>2023/08/08</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Red</td>
-                                <td>2023/08/08</td>
-                                <td>C+</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Blue</td>
-                                <td>2023/08/08</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Yellow</td>
-                                <td>2023/08/08</td>
-                                <td>B+</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="courseresults">
-                    <div class="resultsHeader">
-                        <h2>Second Term Overall Results</h2>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Class</td>
-                                <td>Stream</td>
-                                <td>Issued Date</td>
-                                <td>Mean Grade</td>
-                            </tr>
-                        </thead>
-    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Red</td>
-                                <td>2023/10/11</td>
-                                <td>A-</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Blue</td>
-                                <td>2023/10/11</td>
-                                <td>B</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Yellow</td>
-                                <td>2023/10/11</td>
-                                <td>B+</td>
-                            </tr>
-    
-                            <tr>
-                                <td>2</td>
-                                <td>Red</td>
-                                <td>2023/10/11</td>
-                                <td>B_</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Blue</td>
-                                <td>2023/10/11</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Yellow</td>
-                                <td>2023/10/11</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Red</td>
-                                <td>2023/10/11</td>
-                                <td>A-</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Blue</td>
-                                <td>2023/10/12</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Yellow</td>
-                                <td>2023/10/13</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Red</td>
-                                <td>2023/10/13</td>
-                                <td>B-</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Blue</td>
-                                <td>2023/10/13</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Yellow</td>
-                                <td>2023/10/14</td>
-                                <td>A-</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                <div class="courseresults">
-                    <div class="resultsHeader">
-                        <h2>Third Term Overall Results</h2>
-                    </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Class</td>
-                                <td>Stream</td>
-                                <td>Issued Date</td>
-                                <td>Mean Grade</td>
-                            </tr>
-                        </thead>
-    
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Red</td>
-                                <td>2023/12/10</td>
-                                <td>B+</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Blue</td>
-                                <td>2023/12/10</td>
-                                <td>A-</td>
-                            </tr>
-    
-                            <tr>
-                                <td>1</td>
-                                <td>Yellow</td>
-                                <td>2023/12/10</td>
-                                <td>B</td>
-                            </tr>
-    
-                            <tr>
-                                <td>2</td>
-                                <td>Red</td>
-                                <td>2023/12/10</td>
-                                <td>B-</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Blue</td>
-                                <td>2023/12/10</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Yellow</td>
-                                <td>2023/12/12</td>
-                                <td>A-</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Red</td>
-                                <td>2023/12/11</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Blue</td>
-                                <td>2023/12/11</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Yellow</td>
-                                <td>2023/12/11</td>
-                                <td>B-</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Red</td>
-                                <td>2023/12/11</td>
-                                <td>B</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Blue</td>
-                                <td>2023/12/12</td>
-                                <td>B+</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Yellow</td>
-                                <td>2023/10/08</td>
-                                <td>B-</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 

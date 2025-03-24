@@ -6,193 +6,200 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Class Attendence</title>
-    <!-- Fontawesom Icons -->
+    <title>Attendances</title>
+
+    <!-- Fontawesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- ======= Styles ====== -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <style>
+        .container {
+            display: flex;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- =============== Navigation ================ -->
     <div class="container">
+        <!-- ========== Sidebar Navigation ========== -->
         <div class="navigation">
             <ul>
                 <li>
                     <a href="#">
-                        <span class="icon">
-                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
-                        </span>
+                        <span class="icon"><i class="fa-sharp fa-solid fa-shield-halved"></i></span>
                         <span class="title brand">Matumaini School</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="{% url 'tdashboard' %}">
-                        <span class="icon">
-                            <i class="fa-solid fa-gauge"></i>
-                        </span>
+                        <span class="icon"><i class="fa-solid fa-gauge"></i></span>
                         <span class="title">Teacher Dashboard</span>
                     </a>
                 </li>
-
-            <li>
-
-                <a href="{% url 'tenroll' %}">
-                    <span class="icon">
-                        <i class="fas fa-duotone fa-book"></i>
-                    </span>
-                    <span class="title">Course Enrollemnet</span>
-                </a>
-             </li>
-
-            <li>
-                <a href="{% url 'tclasses' %}">
-                    <span class="icon">
-                        <i class="fas fa-duotone fa-person-chalkboard"></i>
-                    </span>
-                    <span class="title">My Classes</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{% url 'tattendance' %}">
-                    <span class="icon">
-                        <i class="fa-solid fa-clipboard-user"></i>
-                    </span>
-                    <span class="title">Attendance</span>
-                </a>
-            </li>
-
-
-                
+                <li>
+                    <a href="{% url 'tenroll' %}">
+                        <span class="icon"><i class="fas fa-duotone fa-book"></i></span>
+                        <span class="title">Students Results</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="{% url 'tattendance' %}">
+                        <span class="icon"><i class="fa-solid fa-clipboard-user"></i></span>
+                        <span class="title">Attendance</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{% url 'logouts' %}">
-                        <span class="icon">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                        </span>
+                        <span class="icon"><i class="fa-solid fa-right-from-bracket"></i></span>
                         <span class="title">Sign Out</span>
                     </a>
                 </li>
             </ul>
         </div>
 
-        <!-- ========================= Main ==================== -->
-        <div class="main" id="attendence">
+        <!-- ========== Main Content ========== -->
+        <div class="main" id="enroll">
             <div class="topbar">
                 <div class="toggle">
                     <i class="fa-solid fa-list"></i>
                 </div>
-
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-
                 <div class="user">
-                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Profile Image">
                 </div>
             </div>
 
-            <!-- Classes Details -->
-
-            <div class="courseattendence">
-                <div class="attendenceHeader">
-                    <h2>My timetable</h2>
-                </div>
+            <h2>Enter Student Attendance</h2>
             
-                <section class="attendence">
-                    <div class="attendence-box">
-                        <h3>Attendance</h3>
-                        <div class="attendence-option">
-                            <div class="attendence">
-                                <input type="radio" id="check-attend" name="attendence" checked />
-                                <label for="check-male">Attend</label>
-                            </div>
-                            <div class="attendence">
-                                <input type="radio" id="check-notattend" name="attendence" />
-                                <label for="check-female">Not Attend</label>
-                            </div>
-                        </div>
-                    </div>
-                </section> 
-                <button>Submit</button>  
-            </div>
+            <!-- ========== Class Selection Form ========== -->
+            <form method="GET">
+                <label for="class_name">Select Class:</label>
+                <select name="class_name" id="class_name" onchange="this.form.submit()">
+                <option value="">-- Choose Class --</option>
+                <option value="Form 1 Red" {% if class_selected == "Form 1 Red" %}selected{% endif %}>Form 1 Red</option>
+                <option value="Form 1 Blue" {% if class_selected == "Form 1 Blue" %}selected{% endif %}>Form 1 Blue</option>
+                <option value="Form 1 Yellow" {% if class_selected == "Form 1 Yellow" %}selected{% endif %}>Form 1 Yellow</option>
+                <option value="Form 2 Red" {% if class_selected == "Form 2 Red" %}selected{% endif %}>Form 2 Red</option>
+                <option value="Form 2 Blue" {% if class_selected == "Form 2 Blue" %}selected{% endif %}>Form 2 Blue</option>
+                <option value="Form 2 Yellow" {% if class_selected == "Form 2 Yellow" %}selected{% endif %}>Form 2 Yellow</option>
+                <option value="Form 3 Red" {% if class_selected == "Form 3 Red" %}selected{% endif %}>Form 3 Red</option>
+                <option value="Form 3 Blue" {% if class_selected == "Form 3 Blue" %}selected{% endif %}>Form 3 Blue</option>
+                <option value="Form 3 Yellow" {% if class_selected == "Form 3 Yellow" %}selected{% endif %}>Form 3 Yellow</option>
+                <option value="Form 4 Red" {% if class_selected == "Form 4 Red" %}selected{% endif %}>Form 4 Red</option>
+                <option value="Form 4 Blue" {% if class_selected == "Form 4 Blue" %}selected{% endif %}>Form 4 Blue</option>
+                <option value="Form 4 Yellow" {% if class_selected == "Form 4 Yellow" %}selected{% endif %}>Form 4 Yellow</option>
+            </select>
 
-            <div class="details">
-                <div class="timetable">
-                    <div class="timetableheader">
-                        <h2>Timetable</h2>
-                    </div>
-                    <div class="tablecont">
-                        <table cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="period"></th>
-                                    <th>7.30-8.15</th>
-                                    <th>8.15-9.00</th>
-                                    <th>9.00-9.45</th>
-                                    <th>9.45-10.30</th>
-                                    <th>10.30-11.15</th>
-                                    <th>11.15-12.00</th>
-                                    <th>12.00-12.45</th>
-                                    <th>12.45-1.30</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="week"><b>Mon</b></td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td rowspan="5" class="lunch">Lunch Break</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td class="eng">English</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Tue</b></td>
-                                    <td class="eng">English</td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td colspan="2" class="chem">Chemistry</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Wed</b></td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td class="maths"> Maths</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td></td>
-                                    <td colspan="2" class="eng">English</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Thu</b></td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td></td>
-                                    <td colspan="2" class="chem">Chemistry</td>
-                                    <td class="phy">Physics</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Fri</b></td>
-                                    <td></td>
-                                    <td class="phy">Physics</td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td colspan="2" class="eng">English</td>
-                                </tr>
-                            </tbody>  
-                        </table>
-                    </div>
-                </div>
+            </form>
 
-           
+            <!-- ========== Student Attendance Form ========== -->
+            {% if students %}
+            <form method="POST">
+                {% csrf_token %}
+                
+                <label for="subject">Enter Subject:</label>
+                <input type="text" name="subject" required>
+
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Reg Number</th>
+                            <th>Date</th>
+                            <th>Assignment Marks</th>
+                            <th>Term</th>
+                            <th>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ student.full_name }}</td>
+                            <td>{{ student.reg_number }}</td>
+                            <td>
+                                <input type="date" name="date_{{ student.id }}" required>
+                            </td>
+                            <td>
+                                <input type="number" name="assignmentresult_{{ student.id }}" min="0" max="100" required>
+                            </td>
+                            <td>
+                                <select name="term_{{ student.id }}">
+                                    <option value="Term 1">Term 1</option>
+                                    <option value="Term 2">Term 2</option>
+                                    <option value="Term 3">Term 3</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="attendance_{{ student.id }}">
+                                    <option value="Attended">Present</option>
+                                    <option value="Not Attended">Absent</option>
+                                    <option value="Not Attended">Late</option>
+                                </select>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <button type="submit">Save Results</button>
+            </form>
+            {% else %}
+            <p>No students found in {{ class_selected }}.</p>
+            {% endif %}
         </div>
     </div>
-
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
 </body>
-
 </html>

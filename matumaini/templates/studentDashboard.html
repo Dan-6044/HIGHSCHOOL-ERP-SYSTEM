@@ -6,139 +6,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>  Class Attendence</title>
+    <title>Student Dashboard</title>
     <!-- Fontawesom Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <style>
-    /* Timetable Styling */
-.timetable {
-    width: 90%;
-    margin: 20px auto;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background: #ffffff;
-}
-
-.timetableheader {
-    background: #007bff;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.tablecont {
-    overflow-x: auto;
-    padding: 10px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background: #007bff;
-    color: white;
-}
-
-td.slot {
-    background: #f8f9fa;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-td.slot:hover {
-    background: #cce5ff;
-}
-
-td.week {
-    background: #f1f1f1;
-    font-weight: bold;
-}
-
-td.Lunch, td.lunch {
-    background: #ffedcc;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Input Form Styling */
-.entry-form {
-    width: 90%;
-    max-width: 500px;
-    background: white;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.entry-form h3 {
-    text-align: center;
-    color: #007bff;
-    font-size: 20px;
-}
-
-.entry-form label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-    color: #333;
-}
-
-.entry-form select,
-.entry-form input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.entry-form button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.entry-form button:hover {
-    background: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-    .entry-form {
-        width: 100%;
-    }
-}
-
+            <style>
+        .container {
+            display: flex;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
     </style>
 </head>
 
@@ -150,53 +71,34 @@ td.Lunch, td.lunch {
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <i class="fa fa-pie-chart"></i>
+                            <i class="fa-sharp fa-solid fa-shield-halved"></i>
                         </span>
-                        <span class="title brand"> Matumaini School</span>
+                        <span class="title brand">Matumaini School</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{% url 'dashboard' %}">
+                    <a href="{% url 'student_dashboard' %}">
                         <span class="icon">
                             <i class="fa-solid fa-gauge"></i>
                         </span>
-                        <span class="title">Admin Dashboard</span>
+                        <span class="title">Student Dashboard</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="{% url 'steachers' %}">
-                        <span class="icon">
-                            <i class="fa-solid fa-person"></i>
-                        </span>
-                        <span class="title">Add Teacher</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'sstudents' %}">
-                        <span class="icon">
-                            <i class="fa-solid fa-child"></i>
-                        </span>
-                        <span class="title">Add Students</span>
-                    </a>
-                </li>
-
                
+
+
                 <li>
-                    <a href="{% url 'sattendance' %}">
+                    <a href="{% url 'assignment' %}">
                         <span class="icon">
-                            <i class="fa-solid fa-clipboard-user"></i>
+                            <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                         </span>
-                        <span class="title">Timetable</span>
+                        <span class="title">Assign & Attendances</span>
                     </a>
                 </li>
 
-                
-
                 <li>
-                    <a href="{% url 'sresult' %}">
+                    <a href="{% url 'result' %}">
                         <span class="icon">
                             <i class="fa-solid fa-square-poll-vertical"></i>
                         </span>
@@ -205,16 +107,16 @@ td.Lunch, td.lunch {
                 </li>
 
                 <li>
-                    <a href="{% url 'sadminFee' %}">
+                    <a href="{% url 'fee' %}">
                         <span class="icon">
                             <i class="fa-solid fa-sack-dollar"></i>
                         </span>
-                        <span class="title">Fees</span>
+                        <span class="title">Fee</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="{% url 'logoutz' %}">
+                    <a href="{% url 'logout' %}">
                         <span class="icon">
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </span>
@@ -223,26 +125,74 @@ td.Lunch, td.lunch {
                 </li>
             </ul>
         </div>
-<!-- ========================= Main ==================== -->
-<div class="main" id="attendence">
-    <div class="topbar">
-        <div class="toggle">
-            <i class="fa-solid fa-list"></i>
-        </div>
 
-        <div class="search">
-            <label>
-                <input type="text" placeholder="Search here">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
-        </div>
+        <!-- ========================= Main ==================== -->
+        <div class="main" id="dashboard">
+            <div class="topbar">
+                <div class="toggle">
+                    <i class="fa-solid fa-list"></i>
+                </div>
 
-        <div class="user">
-            <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
-        </div>
-    </div>
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
 
-    <!-- Timetable Section -->
+                <div class="user">
+                    <img src="{% static 'images/dp.jpg' %}" alt="Bus Image">
+                </div>
+            </div>
+
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{ total_students }}</div>
+                        <div class="cardName">Students</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{student_class}} </div>
+                        <div class="cardName">Class</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">4</div>
+                        <div class="cardName">Streams</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-university"></i>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers income">{{total_paid_fees}}</div>
+                        <div class="cardName">Fees</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                </div>
+            </div>
+
+   <!-- Timetable Section -->
     <div class="timetable">
         <div class="timetableheader">
             <h2>Timetable</h2>
@@ -351,48 +301,9 @@ td.Lunch, td.lunch {
         </div>
     </div>
 
-   <!-- Subject Entry Form -->
-<div class="entry-form">
-    <h3>Add Subject</h3>
-    <form method="POST" action="{% url 'add_subject' %}">
-        {% csrf_token %}
-        
-        <label for="day">Day:</label>
-        <select id="day" name="day">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-        </select>
 
-        <label for="time">Time Slot:</label>
-        <select id="time" name="time">
-            <option value="8.00-8.40">8.00-8.40</option>
-            <option value="8.40-9.20">8.40-9.20</option>
-            <option value="9.20-10.00">9.20-10.00</option>
-            <option value="10.00-10.40">10.00-10.40</option>
-            <option value="11.00-11.40">11.00-11.40</option>
-            <option value="11.40-12.20">11.40-12.20</option>
-            <option value="12.20-13.00">12.20-13.00</option>
-            <option value="14.00-14.40">14.00-14.40</option>
-            <option value="14.40-15.20">14.40-15.20</option>
-            <option value="15.20-16.00">15.20-16.00</option>
-        </select>
-
-        <label for="subject">Subject:</label>
-        <input type="text" id="subject" name="subject" placeholder="Enter Subject Name" required>
-
-        <label for="teacher_no">Teacher No:</label>
-        <input type="text" id="teacher_no" name="teacher_no" placeholder="Enter Teacher Number" required>
-
-        <button type="submit">Save</button>
-    </form>
-</div>
-
-
-</div>
-
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>

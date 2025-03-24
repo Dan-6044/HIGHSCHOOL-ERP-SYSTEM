@@ -11,6 +11,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <style>
+
+        .fee-container {
+            width: 90%;
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .details {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .details p {
+            margin: 8px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .fees-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .fees-table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .unpaid {
+            color: red;
+            font-weight: bold;
+        }
+
+        .paid {
+            color: green;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -28,7 +90,7 @@
                 </li>
 
                 <li>
-                    <a href="{% url 'sdashbaord' %}">
+                   <a href="{% url 'student_dashboard' %}">
                         <span class="icon">
                             <i class="fa-solid fa-gauge"></i>
                         </span>
@@ -36,23 +98,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{% url 'enroll' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-book"></i>
-                        </span>
-                        <span class="title">Course Enrollemnet</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'classes' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-person-chalkboard"></i>
-                        </span>
-                        <span class="title">My Classes</span>
-                    </a>
-                </li>
 
                 
 
@@ -61,7 +106,7 @@
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                         </span>
-                        <span class="title">Assignment</span>
+                        <span class="title">Assign & Attendances</span>
                     </a>
                 </li>
 
@@ -113,55 +158,35 @@
                 </div>
             </div>
 
-            <!-- Class Fee Details -->
+<div class="fee-container">
+    <h2>Fees Details</h2>
 
-            <div class="fee">
-                <div class="coursefee">
-                    <div class="cardHeader">
-                        <h2> Payment Details</h2>
-                    </div>
+    <div class="details">
+        <p>Student Name: {{ student_name }}</p>
+        <p>Reg Number: {{ student_reg_number }}</p>
+        <p>Class: {{ student_class }}</p>
+    </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Term</td>
-                                <td>Fees Paid</td>
-                                <td>Fees balance</td>
-                                <td>Date Paid</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
+    <table class="fees-table">
+        <thead>
+            <tr>
+                <th>Expected Fees</th>
+                <th>Paid Fees</th>
+                <th>Unpaid Fees</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${{ expected_fees }}</td>
+                <td class="paid">${{ paid_fees }}</td>
+                <td class="unpaid">${{ unpaid_fees }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-                        <tbody>
-                            <tr>
-                                <td>Term One</td>
-                                <td>Ksh 10000</td>
-                                <td>Null</td>
-                                <td>2023/11/26</td>
-                                <td><span class="status fully"> Fully Paid</span></td>
-                            </tr>
+</div>
 
-                            <tr>
-                                <td>Term Two</td>
-                                <td>Ksh 9000</td>
-                                <td>Ksh 2000</td>
-                                <td>2023/11/28</td>
-                                <td><span class="status partially"> Partially Paid</span></td>
-                            </tr>
 
-                    
-
-                            <tr>
-                                <td>Term Three</td>
-                                <td>Ksh 7000</td>
-                                <td>Ksh 7000</td>
-                                <td>2023/11/30</td>
-                                <td><span class="status not"> Not Paid</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 

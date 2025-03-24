@@ -11,6 +11,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <style>
+
+
+        .table-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .badge.success { background-color: #28a745; color: white; }
+        .badge.danger { background-color: #dc3545; color: white; }
+        .badge.warning { background-color: #ffc107; color: black; }
+
+        .no-records {
+            text-align: center;
+            font-weight: bold;
+            color: #888;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,29 +89,11 @@
                 </li>
 
                 <li>
-                    <a href="{% url 'sdashbaord' %}">
+                    <a href="{% url 'student_dashboard' %}">
                         <span class="icon">
                             <i class="fa-solid fa-gauge"></i>
                         </span>
                         <span class="title">Student Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'enroll' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-book"></i>
-                        </span>
-                        <span class="title">Course Enrollemnet</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'classes' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-person-chalkboard"></i>
-                        </span>
-                        <span class="title">My Classes</span>
                     </a>
                 </li>
 
@@ -62,7 +105,7 @@
                         <span class="icon">
                             <i class="fa-sharp fa-solid fa-pen-to-square"></i>
                         </span>
-                        <span class="title">Assignment</span>
+                        <span class="title">Assign & attendances</span>
                     </a>
                 </li>
 
@@ -114,68 +157,50 @@
                 </div>
             </div>
 
-            <!-- Assignment Details -->
-            <div class="assignment">
-                <div class="assignmentHeader">
-                    <h2>My Assignments</h2>
-                </div>
-                <div class="cards_wrap">
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b2.png' %}" alt="Bus Image">
-                            <div class="subject">Maths</div>
-                            <div class="Date">Due:2023/11/28</div>
-                            <div class="noofassignmnets">Number of Assignment: 02</div>
-                            <div class="status complete"> Completed</div>
-                        </div>
-                    </div>
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b1.png' %}" alt="Bus Image">
-                            <div class="subject">English</div>
-                            <div class="Date">Due:2023/11/29</div>
-                            <div class="noofassignmnets">Number of Assignment: 05</div>
-                            <div class="status complete">Completed</div>
-                        </div>
-                    </div>
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b3.png' %}" alt="Bus Image">
-                            <div class="subject">Chemistry</div>
-                            <div class="Date">2023/11/30</div>
-                            <div class="noofassignmnets">Number of Assignment: 02</div>
-                            <div class="status complete">Completed</div>
-                        </div>
-                    </div>
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b3.png' %}" alt="Bus Image">
-                            <div class="subject">Biology</div>
-                            <div class="Date">2023/12/1</div>
-                            <div class="noofassignmnets">Number of Assignment: 02</div>
-                            <div class="status complete">Completed</div>
-                        </div>
-                    </div>
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b3.png' %}" alt="Bus Image">
-                            <div class="subject">Physics</div>
-                            <div class="Date">2023/12/2</div>
-                            <div class="noofassignmnets">Number of Assignment: 02</div>
-                            <div class="status notcomplete">Not Completed</div>
-                        </div>
-                    </div>
-                    <div class="card_item">
-                        <div class="card_inner">
-                            <img src="{% static 'images/b4.png' %}" alt="Bus Image">
-                            <div class="subject">Business Studies</div>
-                            <div class="Date">2023/12/3</div>
-                            <div class="noofassignmnets">Number of Assignment: 3</div>
-                            <div class="status notcomplete">Not Completed</div>
-                        </div>
-                    </div>
-                </div>
-            </div>  
+<div class="table-container">
+    <h2>{{ student_name }}'s Attendance Records</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Reg Number</th>
+                <th>Teacher</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Assignment Marks</th>
+                <th>Term</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for record in attendance_records %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ record.reg_number }}</td>
+                <td>{{ record.teacher.full_name }}</td>
+                <td>{{ record.date }}</td>
+                <td>
+                    {% if record.status == "Attended" %}
+                        <span class="badge success">{{ record.status }}</span>
+                    {% elif record.status == "Not Attended" %}
+                        <span class="badge danger">{{ record.status }}</span>
+                    {% else %}
+                        <span class="badge warning">{{ record.status }}</span>
+                    {% endif %}
+                </td>
+                <td>{{ record.assignment_marks|default:"-" }}</td>
+                <td>{{ record.term }}</td>
+                <td>{{ record.subject|default:"-" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="no-records">No attendance records found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>  
            
         </div>
     </div>

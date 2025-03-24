@@ -13,6 +13,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+        <style>
+        .container {
+            display: flex;
+        }
+        .main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007bff;
+            color: #fff;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 
 <body>
@@ -43,18 +93,11 @@
                         <span class="icon">
                             <i class="fas fa-duotone fa-book"></i>
                         </span>
-                        <span class="title">Course Enrollemnet</span>
+                        <span class="title">Students Results</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="{% url 'tclasses' %}">
-                        <span class="icon">
-                            <i class="fas fa-duotone fa-person-chalkboard"></i>
-                        </span>
-                        <span class="title">My Classes</span>
-                    </a>
-                </li>
+                
 
                 <li>
                     <a href="{% url 'tattendance' %}">
@@ -102,7 +145,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">150</div>
+                        <div class="numbers">{{ total_students }}</div>
                         <div class="cardName">Students</div>
                     </div>
 
@@ -113,7 +156,7 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">100</div>
+                        <div class="numbers">{{ total_teachers }}</div>
                         <div class="cardName">Teachers</div>
                     </div>
                     
@@ -125,8 +168,8 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">40</div>
-                        <div class="cardName">Form 1 North</div>
+                        <div class="numbers">12</div>
+                        <div class="cardName">Classes</div>
                     </div>
 
                     <div class="iconBx">
@@ -137,91 +180,115 @@
                
             </div>
 
-            <!-- Time Table & Progress -->
+    <!-- Timetable Section -->
+    <div class="timetable">
+        <div class="timetableheader">
+            <h2>Timetable</h2>
+        </div>
+        <div class="tablecont">
+            <table cellspacing="0" id="timetable">
+                <thead>
+                    <tr>
+                        <th class="period"></th>
+                        <th>8.00-8.40</th>
+                        <th>8.40-9.20</th>
+                        <th>9.20-10.00</th>
+                        <th>10.00-10.40</th>
+                        <th>10.40-11.00</th>
+                        <th>11.00-11.40</th>
+                        <th>11.40-12.20</th>
+                        <th>12.20-13.00</th>
+                        <th>13.00-14.00</th>
+                        <th>14.00-14.40</th>
+                        <th>14.40-15.20</th>
+                        <th>15.20-16.00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Monday Row -->
+                                    <!-- Monday Row -->
+                <tr data-day="Monday">
+                    <td class="week"><b>Mon</b></td>
+                    <td class="slot" data-time="8.00-8.40">{{ timetable_data.Monday.8_00_8_40|default:"-" }}</td>
+                    <td class="slot" data-time="8.40-9.20">{{ timetable_data.Monday.8_40_9_20|default:"-" }}</td>
+                    <td class="slot" data-time="9.20-10.00">{{ timetable_data.Monday.9_20_10_00|default:"-" }}</td>
+                    <td class="slot" data-time="10.00-10.40">{{ timetable_data.Monday.10_00_10_40|default:"-" }}</td>
+                    <td rowspan="5" class="Lunch">Tea Break</td>
+                    <td class="slot" data-time="11.00-11.40">{{ timetable_data.Monday.11_00_11_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.40-12.20">{{ timetable_data.Monday.11_40_12_20|default:"-" }}</td>
+                    <td class="slot" data-time="12.20-13.00">{{ timetable_data.Monday.12_20_13_00|default:"-" }}</td>
+                    <td rowspan="5" class="lunch">Lunch Break</td>
+                    <td class="slot" data-time="14.00-14.40">{{ timetable_data.Monday.14_00_14_40|default:"-" }}</td>
+                    <td class="slot" data-time="14.40-15.20">{{ timetable_data.Monday.14_40_15_20|default:"-" }}</td>
+                    <td class="slot" data-time="15.20-16.00">{{ timetable_data.Monday.15_20_16_00|default:"-" }}</td>
+                </tr>
 
-            <div class="details">
-                <div class="timetable">
-                    <div class="timetableheader">
-                        <h2>Timetable</h2>
-                    </div>
-                    <div class="tablecont">
-                        <table cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="period"></th>
-                                    <th>7.30-8.15</th>
-                                    <th>8.15-9.00</th>
-                                    <th>9.00-9.45</th>
-                                    <th>9.45-10.30</th>
-                                    <th>10.30-11.15</th>
-                                    <th>11.15-12.00</th>
-                                    <th>12.00-12.45</th>
-                                    <th>12.45-1.30</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="week"><b>Mon</b></td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td rowspan="5" class="lunch">Lunch Break</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td class="eng">English</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Tue</b></td>
-                                    <td class="eng">English</td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td colspan="2" class="chem">Chemistry</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Wed</b></td>
-                                    <td colspan="2" class="phy">Physics</td>
-                                    <td class="maths"> Maths</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td></td>
-                                    <td colspan="2" class="eng">English</td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Thu</b></td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td></td>
-                                    <td colspan="2" class="chem">Chemistry</td>
-                                    <td class="phy">Physics</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td class="week"><b>Fri</b></td>
-                                    <td></td>
-                                    <td class="phy">Physics</td>
-                                    <td colspan="2" class="maths"> Maths</td>
-                                    <td class="chem">Chemistry</td>
-                                    <td colspan="2" class="eng">English</td>
-                                </tr>
-                            </tbody>  
-                        </table>
-                    </div>
-                </div>
+                <!-- Tuesday Row -->
+                <tr data-day="Tuesday">
+                    <td class="week"><b>Tue</b></td>
+                    <td class="slot" data-time="8.00-8.40">{{ timetable_data.Tuesday.8_00_8_40|default:"-" }}</td>
+                    <td class="slot" data-time="8.40-9.20">{{ timetable_data.Tuesday.8_40_9_20|default:"-" }}</td>
+                    <td class="slot" data-time="9.20-10.00">{{ timetable_data.Tuesday.9_20_10_00|default:"-" }}</td>
+                    <td class="slot" data-time="10.00-10.40">{{ timetable_data.Tuesday.10_00_10_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.00-11.40">{{ timetable_data.Tuesday.11_00_11_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.40-12.20">{{ timetable_data.Tuesday.11_40_12_20|default:"-" }}</td>
+                    <td class="slot" data-time="12.20-13.00">{{ timetable_data.Tuesday.12_20_13_00|default:"-" }}</td>
+                    <td class="slot" data-time="14.00-14.40">{{ timetable_data.Tuesday.14_00_14_40|default:"-" }}</td>
+                    <td class="slot" data-time="14.40-15.20">{{ timetable_data.Tuesday.14_40_15_20|default:"-" }}</td>
+                    <td class="slot" data-time="15.20-16.00">{{ timetable_data.Tuesday.15_20_16_00|default:"-" }}</td>
+                </tr>
 
-                <div class="progressbar">
-                    <div class="progressheader">
-                        <h2>Target</h2>
-                    </div>
-                    <div class="circle">
-                        <div class="circular-progress">
-                            <span class="progress-value">0%</span>
-                        </div>
-                    </div>
-                    <div class="progresscont">
-                        <p> Maths = <span class="maths">75%</span></p>
-                        <p>Physic = <span class="phy">80%</span></p>
-                        <p>Chemistry = <span class="chem">77%</span></p>
-                        <p>English = <span class="eng">85%</span></p>
-                    </div>
-                </div>
-            </div>
+                <!-- Wednesday Row -->
+                <tr data-day="Wednesday">
+                    <td class="week"><b>Wed</b></td>
+                    <td class="slot" data-time="8.00-8.40">{{ timetable_data.Wednesday.8_00_8_40|default:"-" }}</td>
+                    <td class="slot" data-time="8.40-9.20">{{ timetable_data.Wednesday.8_40_9_20|default:"-" }}</td>
+                    <td class="slot" data-time="9.20-10.00">{{ timetable_data.Wednesday.9_20_10_00|default:"-" }}</td>
+                    <td class="slot" data-time="10.00-10.40">{{ timetable_data.Wednesday.10_00_10_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.00-11.40">{{ timetable_data.Wednesday.11_00_11_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.40-12.20">{{ timetable_data.Wednesday.11_40_12_20|default:"-" }}</td>
+                    <td class="slot" data-time="12.20-13.00">{{ timetable_data.Wednesday.12_20_13_00|default:"-" }}</td>
+                    <td class="slot" data-time="14.00-14.40">{{ timetable_data.Wednesday.14_00_14_40|default:"-" }}</td>
+                    <td class="slot" data-time="14.40-15.20">{{ timetable_data.Wednesday.14_40_15_20|default:"-" }}</td>
+                    <td class="slot" data-time="15.20-16.00">{{ timetable_data.Wednesday.15_20_16_00|default:"-" }}</td>
+                </tr>
+
+                <!-- Thursday Row -->
+                <tr data-day="Thursday">
+                    <td class="week"><b>Thu</b></td>
+                    <td class="slot" data-time="8.00-8.40">{{ timetable_data.Thursday.8_00_8_40|default:"-" }}</td>
+                    <td class="slot" data-time="8.40-9.20">{{ timetable_data.Thursday.8_40_9_20|default:"-" }}</td>
+                    <td class="slot" data-time="9.20-10.00">{{ timetable_data.Thursday.9_20_10_00|default:"-" }}</td>
+                    <td class="slot" data-time="10.00-10.40">{{ timetable_data.Thursday.10_00_10_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.00-11.40">{{ timetable_data.Thursday.11_00_11_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.40-12.20">{{ timetable_data.Thursday.11_40_12_20|default:"-" }}</td>
+                    <td class="slot" data-time="12.20-13.00">{{ timetable_data.Thursday.12_20_13_00|default:"-" }}</td>
+                    <td class="slot" data-time="14.00-14.40">{{ timetable_data.Thursday.14_00_14_40|default:"-" }}</td>
+                    <td class="slot" data-time="14.40-15.20">{{ timetable_data.Thursday.14_40_15_20|default:"-" }}</td>
+                    <td class="slot" data-time="15.20-16.00">{{ timetable_data.Thursday.15_20_16_00|default:"-" }}</td>
+                </tr>
+
+                <!-- Friday Row -->
+                <tr data-day="Friday">
+                    <td class="week"><b>Fri</b></td>
+                    <td class="slot" data-time="8.00-8.40">{{ timetable_data.Friday.8_00_8_40|default:"-" }}</td>
+                    <td class="slot" data-time="8.40-9.20">{{ timetable_data.Friday.8_40_9_20|default:"-" }}</td>
+                    <td class="slot" data-time="9.20-10.00">{{ timetable_data.Friday.9_20_10_00|default:"-" }}</td>
+                    <td class="slot" data-time="10.00-10.40">{{ timetable_data.Friday.10_00_10_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.00-11.40">{{ timetable_data.Friday.11_00_11_40|default:"-" }}</td>
+                    <td class="slot" data-time="11.40-12.20">{{ timetable_data.Friday.11_40_12_20|default:"-" }}</td>
+                    <td class="slot" data-time="12.20-13.00">{{ timetable_data.Friday.12_20_13_00|default:"-" }}</td>
+                    <td class="slot" data-time="14.00-14.40">{{ timetable_data.Friday.14_00_14_40|default:"-" }}</td>
+                    <td class="slot" data-time="14.40-15.20">{{ timetable_data.Friday.14_40_15_20|default:"-" }}</td>
+                    <td class="slot" data-time="15.20-16.00">{{ timetable_data.Friday.15_20_16_00|default:"-" }}</td>
+                </tr>
+
+                    <!-- Other rows... -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+            
         </div>
     </div>
 
